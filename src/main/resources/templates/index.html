@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index thymeleaf</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/c5.css}" />
+    <script th:src="@{/assets/js/jquery.min.js}" ></script>
+    <script th:src="@{/js/mainContainer.js}" ></script>
+</head>
+<body class="html">
+<div id="wrapper">
+    <div id="navsecond">
+        <div id="course" >
+            <div th:each="title : ${titleList}">
+                <h2 th:text="${title.name}"></h2>
+                <ul >
+                    <li th:each="detail : ${detailList}" th:if="${detail.pid==title.id}"><a  th:onclick="|showPage('/knowledge/getInfo?id=${detail.id}' , this)|" th:text=="${detail.name}"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div id="maincontent">
+    </div>
+</div>
+<!-- wrapper end -->
+</body>
+<script>
+    var ctx = '';
+</script>
+</html>
